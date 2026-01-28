@@ -96,7 +96,7 @@ python3 test.py
 docker run -it --rm \
    --runtime=nvidia \
    --gpus '"device=0"' \
-   --shm-size=24GB \
+   --shm-size=14GB \
    -e NGC_API_KEY \
    -e NIM_HTTP_API_PORT=9000 \
    -e NIM_GRPC_API_PORT=50051 \
