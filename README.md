@@ -1,23 +1,23 @@
 
 
 # Tasks
-[x] Run model
-[x] Cache models
-[x] Save output to file
-[ ] wtf is TDT, CTC and RNNT?
+- [x] Run model
+- [x] Cache models
+- [x] Save output to file
+- [ ] wtf is TDT, CTC and RNNT?
       - CTC is non-autoregressive model: https://docs.nvidia.com/nemo-framework/user-guide/latest/nemotoolkit/asr/models.html#conformer-ctc
-[ ] Check what other feature Riva supports
-[ ] Diarization with preset speakers via audio samples
+- [ ] Check what other feature Riva supports
+- [ ] Diarization with preset speakers via audio samples
       - https://github.com/nvidia-riva/tutorials/blob/main/asr-speaker-diarization.ipynb
       - https://docs.nvidia.com/nim/riva/asr/latest/support-matrix.html#speech-recognition-with-vad-and-speaker-diarization
         - NIM_TAGS_SELECTOR="name=parakeet-0-6b-ctc-en-us,mode=ofl,diarizer=sortformer,vad=silero" tags to use diarization
           - requires 12g vram coz batch size = 1024
           - without diarizer and batch size = 1 it takes up 3g "name=parakeet-0-6b-ctc-en-us,bs=1,mode=ofl,diarizer=disabled,vad=default"
       - figure out wtf this is and if it will help https://docs.nvidia.com/nim/riva/asr/latest/pipeline-configuration.html
-[ ] Batch process audio files
+- [ ] Batch process audio files
       - https://docs.nvidia.com/nim/riva/asr/latest/performance.html
       - https://docs.nvidia.com/nim/riva/asr/latest/deploy-helm.html (for more than 2 gpu's)
-[ ] Keep model loaded to save time
+- [ ] Keep model loaded to save time
 
 # Run Client
 ```
