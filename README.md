@@ -4,20 +4,29 @@
 - [x] Run model
 - [x] Cache models
 - [x] Save output to file
-- [ ] wtf is TDT, CTC and RNNT?
-      - CTC is non-autoregressive model: https://docs.nvidia.com/nemo-framework/user-guide/latest/nemotoolkit/asr/models.html#conformer-ctc
-- [ ] Check what other feature Riva supports
 - [ ] Diarization with preset speakers via audio samples
       - https://github.com/nvidia-riva/tutorials/blob/main/asr-speaker-diarization.ipynb
       - https://docs.nvidia.com/nim/riva/asr/latest/support-matrix.html#speech-recognition-with-vad-and-speaker-diarization
-        - NIM_TAGS_SELECTOR="name=parakeet-0-6b-ctc-en-us,mode=ofl,diarizer=sortformer,vad=silero" tags to use diarization
-          - requires 12g vram coz batch size = 1024
-          - without diarizer and batch size = 1 it takes up 3g "name=parakeet-0-6b-ctc-en-us,bs=1,mode=ofl,diarizer=disabled,vad=default"
+      - https://docs.nvidia.com/nemo-framework/user-guide/latest/nemotoolkit/asr/speaker_diarization/intro.html
+      - https://docs.nvidia.com/nemo-framework/user-guide/latest/nemotoolkit/asr/speaker_recognition/intro.html
+      - https://docs.nvidia.com/nemo-framework/user-guide/latest/nemotoolkit/asr/speaker_recognition/models.html
+      - https://docs.nvidia.com/nemo-framework/user-guide/latest/nemotoolkit/asr/speaker_recognition/models.html
+      - https://www.alphaneural.io/assets/nvidia/speakerverification_en_titanet_large
+      - https://github.com/NVIDIA-NeMo/NeMo/blob/main/examples/speaker_tasks/recognition/speaker_reco.py
+      - https://github.com/NVIDIA-NeMo/NeMo/tree/main/examples/speaker_tasks/recognition
+      - https://catalog.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/titanet_large?version=v1
+      - https://catalog.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/ecapa_tdnn?version=1.16.0
+      - https://huggingface.co/nvidia/diar_streaming_sortformer_4spk-v2.1#%F0%9F%94%AC-for-more-detailed-evaluations-der
       - figure out wtf this is and if it will help https://docs.nvidia.com/nim/riva/asr/latest/pipeline-configuration.html
 - [ ] Batch process audio files
       - https://docs.nvidia.com/nim/riva/asr/latest/performance.html
       - https://docs.nvidia.com/nim/riva/asr/latest/deploy-helm.html (for more than 2 gpu's)
 - [ ] Keep model loaded to save time
+- [ ] Better approach? https://edemiraydin.medium.com/unlocking-the-power-of-speech-ai-a-step-by-step-guide-to-integrating-nvidia-riva-nims-with-llm-rag-95bd92fe06a7
+- [ ] OR this? 
+      - https://huggingface.co/nvidia/multitalker-parakeet-streaming-0.6b-v1
+      - https://huggingface.co/nvidia/multitalker-parakeet-streaming-0.6b-v1#method-2-use-nemo-example-file-in-nvidianemo
+
 
 # Run Client
 ```
@@ -110,3 +119,6 @@ https://docs.nvidia.com/nim/riva/asr/latest/getting-started.html
 Response object: https://docs.nvidia.com/deeplearning/riva/user-guide/docs/reference/protos/protos.html#_CPPv426StreamingRecognitionResult (This response object is dog shit, fuck nvidia) https://docs.nvidia.com/deeplearning/riva/archives/160-b/user-guide/docs/protobuf-api/jarvis_asr.proto.html#_CPPv48WordInfo
 Only useful way of parsing response: https://www.google.com/search?q=process+nvidia+riva+RecognizeResponse
 audio chunk iterator: https://github.com/nvidia-riva/python-clients/blob/main/riva/client/asr.py#L49
+
+# Notes
+- Currently, Sortformer speaker diarization is supported only with the Parakeet-CTC and Conformer-CTC ASR models in streaming mode. (https://docs.nvidia.com/deeplearning/riva/user-guide/docs/asr/asr-overview.html#streaming-recognition-with-speaker-diarization)
