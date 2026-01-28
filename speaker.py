@@ -24,7 +24,7 @@ config.max_alternatives = 1                       # How many top-N hypotheses to
 config.enable_automatic_punctuation = True        # Add punctuation when end of VAD detected
 config.audio_channel_count = 1  # Mono channel
 config.enable_word_time_offsets=True                  
-riva.client.asr.add_speaker_diarization_to_config(config, diarization_enable=True)
+riva.client.asr.add_speaker_diarization_to_config(config, diarization_enable=True, diarization_max_speakers=15)
 response = riva_asr.offline_recognize(content, config)
 
 # Turn into actual json array (riva object isn't json and breaks when saving to a file)
@@ -36,13 +36,13 @@ for result in response.results:
         for wordInfo in audioBlock.words:
             record = {
                 "word": wordInfo.word,
-                "speaker": wordInfo.speaker_tag
-                # "start_time":wordInfo.start_time,
-                # "end_time":wordInfo.end_time
+                "speaker": wordInfo.speaker_tag,
+                "start_time":wordInfo.start_time,
+                "end_time":wordInfo.end_time
             }
             words.append(record)
     block = {
-        # "transcript":audioBlock.transcript,
+        "transcript":audioBlock.transcript,
         "words": words
     }
     transcript.append(block)

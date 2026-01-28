@@ -21,10 +21,18 @@
 
 # Run Client
 ```
+# UV example
 uv venv --python 3.12 
 source .venv/bin/activate
 uv pip install -r requirements.txt 
-uv run test.py
+uv run basic.py
+```
+```
+# Python example
+python3 -m venv myenv
+source myenv/bin/activate
+pip install -r requirements.txt 
+python3 basic.py
 ```
 
 # Run Model API (Nvidia NIM)
