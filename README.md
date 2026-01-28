@@ -18,6 +18,7 @@
       - https://catalog.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/ecapa_tdnn?version=1.16.0
       - https://huggingface.co/nvidia/diar_streaming_sortformer_4spk-v2.1#%F0%9F%94%AC-for-more-detailed-evaluations-der
       - figure out wtf this is and if it will help https://docs.nvidia.com/nim/riva/asr/latest/pipeline-configuration.html
+      - https://github.com/NVIDIA-NeMo/NeMo/blob/stable/tutorials/speaker_tasks/Speaker_Identification_Verification.ipynb
 - [ ] Batch process audio files
       - https://docs.nvidia.com/nim/riva/asr/latest/performance.html
       - https://docs.nvidia.com/nim/riva/asr/latest/deploy-helm.html (for more than 2 gpu's)
@@ -95,7 +96,7 @@ python3 test.py
 docker run -it --rm \
    --runtime=nvidia \
    --gpus '"device=0"' \
-   --shm-size=8GB \
+   --shm-size=24GB \
    -e NGC_API_KEY \
    -e NIM_HTTP_API_PORT=9000 \
    -e NIM_GRPC_API_PORT=50051 \
